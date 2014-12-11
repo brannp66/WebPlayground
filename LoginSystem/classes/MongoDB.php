@@ -1,6 +1,7 @@
 <?php
 
-require_once 'include/constants.php';
+include_once "constants.php";
+include "../includes/constants.php";
 
 class myMongoDB {
 	private $db;
@@ -50,5 +51,6 @@ class myMongoDB {
 																				'email'=>$email));
 	}
 }
+
 
 ?>

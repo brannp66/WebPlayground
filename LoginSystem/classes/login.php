@@ -4,7 +4,8 @@ require_once 'MongoDB.php';
 
 class Login {
 
-	// Checks for username and password in database and redirects to home page if logged in
+	// Checks for username and password in database 
+	// redirects to home page if logged in
 	function validate_user($user, $pwd) {
 		$mongo = new myMongoDB();
 		$verify = $mongo->verify_username_and_password($user, $pwd);// will need to add hashing
@@ -59,9 +60,11 @@ class Login {
 }
 
 // I didn't really know where else to put this. 
-//its not part of the login class exactly but it connects to it
-//it is mainly here for the ajax request. 
-//I need to look up more on best practices for things like this.
+// its not part of the login class exactly but it connects to it
+// and it felt silly to create a file just for it
+// but i need to post the data somewhere
+// it is mainly here for the ajax request. 
+// I need to look up more on best practices for things like this.
 if(isset($_POST['userCheck'])) {
 	$login = new Login();
 	$isAvailable = $login->check_username_availability($_POST['userCheck']);

@@ -5,11 +5,11 @@ $login = new Login();
 
 if(isset($_POST) && isset($_POST['username']) && 
 	 isset($_POST['password']) && isset($_POST['email'])) {
-
+	
 	//need to add serverside validation
 
 	$login->add_user($_POST['username'], $_POST['password'], $_POST['email']);
-	//stuff for email activation goes here, but until then
+	//stuff for email activation goes here, but until then:
 	$login->validate_user($_POST['username'], $_POST['password']);
 }
 ?>
@@ -23,7 +23,7 @@ if(isset($_POST) && isset($_POST['username']) &&
 		<script src="js/foundation.min.js"></script>
 		<script src="js/main.js"></script>
 		<link rel='stylesheet' type='text/css' href='css/foundation.css' />
-		<link rel='stylesheet' type='text/cdd' href='css/style.css' />
+		<link rel='stylesheet' type='text/css' href='css/style.css' />
 	</head>
 	<body>
 		<div class='prompt'>
