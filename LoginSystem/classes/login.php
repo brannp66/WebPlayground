@@ -75,6 +75,6 @@ if(isset($_POST['userCheck'])) {
 	else {
 		echo false;
 	}
-}
+} 
 
 ?>

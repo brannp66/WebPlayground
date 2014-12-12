@@ -7,8 +7,9 @@ if(isset($_POST) && isset($_POST['username']) &&
 	 isset($_POST['password']) && isset($_POST['email'])) {
 	
 	//need to add serverside validation
-
+	
 	$login->add_user($_POST['username'], $_POST['password'], $_POST['email']);
+	
 	//stuff for email activation goes here, but until then:
 	$login->validate_user($_POST['username'], $_POST['password']);
 }
@@ -61,7 +62,7 @@ if(isset($_POST) && isset($_POST['username']) &&
 							</label>
 							<small class='error'>Passwords did not match</small>
 						</div>
-						<input type='button' value='Create Account' class='button'/>
+						<input type='submit' value='Create Account' class='button'/>
 					</form>
 				</div>
 			</div>
