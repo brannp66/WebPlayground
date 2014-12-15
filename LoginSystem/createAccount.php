@@ -7,12 +7,13 @@ if(isset($_POST) && isset($_POST['username']) &&
 	 isset($_POST['password']) && isset($_POST['email'])) {
 	
 	//need to add serverside validation
-	
+
 	$login->add_user($_POST['username'], $_POST['password'], $_POST['email']);
 	
 	//stuff for email activation goes here, but until then:
 	$login->validate_user($_POST['username'], $_POST['password']);
 }
+
 ?>
 
 <!doctype html>
@@ -44,9 +45,9 @@ if(isset($_POST) && isset($_POST['username']) &&
 							</label>
 							<small class='error'>Email addresses did not match</small>
 						</div>
-						<div class='name-field' id='username'>
+						<div id='username'>
 							<label>Username
-								<input type='text' name='username' oninput='validateUsername(this.value)' required />
+								<input type='text' name='username' onfocusout='validateUsername(this.value)' onfocus='removeError()' required />
 							</label>
 							<small class="error">Username not available</small>
 						</div>

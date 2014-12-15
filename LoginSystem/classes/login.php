@@ -8,7 +8,7 @@ class Login {
 	// redirects to home page if logged in
 	function validate_user($user, $pwd) {
 		$mongo = new myMongoDB();
-		$verify = $mongo->verify_username_and_password($user, $pwd);// will need to add hashing
+		$verify = $mongo->verify_login($user, $pwd);// will need to add hashing
 		if($verify) {
 			$_SESSION['loggedIn'] = 1;
 			header("location: home.php");
@@ -43,7 +43,7 @@ class Login {
 	//returns false if not available
 	function check_username_availability($user) {
 		$mongo = new myMongoDB();
-		$inDatabase = $mongo->check_for_user($user);
+		$inDatabase = $mongo->verify_user($user);
 
 		if($inDatabase) {
 			return false;
@@ -53,28 +53,11 @@ class Login {
 		}
 	}
 
+	//adds user to the database
 	function add_user($user, $pwd, $email) {
 		$mongo = new myMongoDB();
 		$mongo->add_user($user, $pwd, $email);
 	}
 }
-
-// I didn't really know where else to put this. 
-// its not part of the login class exactly but it connects to it
-// and it felt silly to create a file just for it
-// but i need to post the data somewhere
-// it is mainly here for the ajax request. 
-// I need to look up more on best practices for things like this.
-if(isset($_POST['userCheck'])) {
-	$login = new Login();
-	$isAvailable = $login->check_username_availability($_POST['userCheck']);
-
-	if($isAvailable) {
-		echo true;
-	}
-	else {
-		echo false;
-	}
-} 
 
 ?>

@@ -23,12 +23,11 @@ class myMongoDB {
 	//Verifies login credentials
 	//returns true if a match is found,
 	//returns false if no match
-	function verify_username_and_password($user, $pwd) {
+	function verify_login($user, $pwd) {
 		$collection = $this->db->Users;
-		$result = $collection->findOne(array('username' => $user,
-																				 'password' => $pwd)); //need to add hashing
+		$result = $collection->findOne(array('username' => $user));
 		
-		if($result) {
+		if(password_verify($pwd, $result['password']) {
 			return true;
 		}
 		else {
@@ -39,7 +38,7 @@ class myMongoDB {
 	// checks if a user is in the database
 	// returns true if user is in database
 	// returns false if user is not in database
-	function check_for_user($user) {
+	function verify_user($user) {
 		$collection = $this->db->Users;
 		$result = $collection->findOne(array('username' => $user));
 
@@ -54,10 +53,16 @@ class myMongoDB {
 	// adds a username, password, and email to the Users table i.e. creates account
 	function add_user($user, $password, $email) {
 		$collection = $this->db->Users;
+
+		$hash = password_hash($pwd, PASSWORD_BCRYPT);
+
 		$result = $collection->insert(array('username'=>$user,
-																				'password'=>$password,
+																				'password'=>$hash,
 																				'email'=>$email));
 	}
 }
+
+$test = new myMongoDB();
+$test->verify_login('test', 'test');
 
 ?>
