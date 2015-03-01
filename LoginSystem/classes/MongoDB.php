@@ -25,6 +25,8 @@ class myMongoDB {
 	//returns false if no match
 	function verify_username_and_password($user, $pwd) {
 		$collection = $this->db->Users;
+
+		
 		$result = $collection->findOne(array('username' => $user,
 																				 'password' => $pwd)); //need to add hashing
 		
@@ -54,8 +56,11 @@ class myMongoDB {
 	// adds a username, password, and email to the Users table i.e. creates account
 	function add_user($user, $password, $email) {
 		$collection = $this->db->Users;
+
+		$hashedPassword = password_hash($password);
+
 		$result = $collection->insert(array('username'=>$user,
-																				'password'=>$password,
+																				'password'=>$hashedPassword,
 																				'email'=>$email));
 	}
 }

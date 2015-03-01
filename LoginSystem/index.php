@@ -32,8 +32,19 @@ if(isset($_POST)) {
 		<link rel='stylesheet' type='text/css' href='css/style.css' />
 	</head>
 	<body>
+		<div class="input">
+			<div class='container'>
+				<img src='http://www.traveltechnologyupdate.com/picts/Logos/Sabre_lg_350x.jpg' alt='logo'>
+				<ul>
+					<li>Plan A Trip</li>
+					<li>Browse Activities</li>
+					<li>Pre-planned Trips</li>
+					<li>About Us</li>
+				</ul>
+			</div>
+		</div>
+
 		<div class='prompt'>
-			<h1>Welcome</h1>
 			<div class='input'>
 				<div class='containter'>
 					<form method='post' action='' onchange="return validateForm();"/>
@@ -46,7 +57,6 @@ if(isset($_POST)) {
 						?>
 						<input type='text' name='username' placeholder='Username' />
 						<input type='password' name='password' placeholder='Password' />
-						<!-- <input type='checkbox' name='keep' />Keep me signed in -->
 						<input type='submit' name='login' value='Sign In' class='button' />
 						<input type='submit' name='create' value='Create Account' class='button'/>
 					</form>
@@ -57,3 +67,8 @@ if(isset($_POST)) {
 		<script>$(document).foundation();</script>
 	</body>
 </html>
+
+plan a trip
+browse activites
+preplanned trips
+about us
